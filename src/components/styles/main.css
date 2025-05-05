@@ -1,48 +1,159 @@
-/* main.css */
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jura&family=Press+Start+2P&display=swap');
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* General body styling */
+body {
+  font-family: 'Jura', sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #fff; /* Light text for contrast */
+  margin: 0;
+  padding: 0;
 }
 
-.app-header {
-  padding: 20px;
+.page-content {
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  width: 150px; /* Adjust size as needed */
-  height: auto;
-}
 
-.navbar {
-  background-color: #333;
-  width: 100%;
+.container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 10px 0;
+  align-items: center;
+  width: 50%;
 }
 
-.navbar ul {
+/* Header */
+.header-logo {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Navbar */
+.navbar {
   display: flex;
-  list-style-type: none;
-}
-
-.navbar li {
-  margin: 0 15px;
+  justify-content: space-around;
+  background-color: #1f1f1f; /* Slightly lighter dark background */
+  padding: 10px 0;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2); /* Neon-like glow effect */
 }
 
 .navbar a {
-  color: white;
-  text-decoration: none;
+  color: #00FFFF; /* Neon Blue */
   font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar a:hover {
-  text-decoration: underline;
+  background-color: #9B4D96; /* Neon Purple */
+  color: #FF00FF; /* Neon Pink */
+  border-radius: 5px;
 }
 
-.main-content {
-  padding: 20px;
+/* Buttons */
+button {
+  background-color: #00FFFF; /* Neon Blue */
+  color: #121212; /* Dark text */
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Neon glow */
 }
+
+button:hover {
+  background-color: #FF00FF; /* Neon Pink */
+  transform: scale(1.05);
+}
+
+/* Form and input styling */
+input[type="number"],
+input[type="range"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #00FFFF; /* Neon Blue border */
+  border-radius: 5px;
+  width: 50%;
+  margin: 5px 0 15px;
+  background-color: #333; /* Dark background for inputs */
+  color: #fff;
+}
+
+input[type="number"]:focus,
+input[type="range"]:focus {
+  border-color: #FF00FF; /* Neon Pink focus */
+  outline: none;
+}
+
+/* Table Styling */
+table {
+  width: 75%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 1px solid #00FFFF; /* Neon Blue border */
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #444; /* Darker border */
+}
+
+th {
+  background-color: #9B4D96; /* Neon Purple */
+  color: white;
+}
+
+tr:hover {
+  background-color: #333; /* Darker row on hover */
+}
+
+/* Pie chart */
+.PieChart {
+  margin-top: 30px;
+  background: linear-gradient(135deg, #00FFFF, #9B4D96); /* Gradient effect */
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.yield-table {
+  border-collapse: collapse;
+  width: 80%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace; /* Cyberpunk look */
+  border: 1px solid #08f;
+}
+
+.yield-table th,
+.yield-table td {
+  border: 1px solid #08f;
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+.yield-table th {
+  background-color: #0ff;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.yield-table tr:nth-child(even) {
+  background-color: rgba(0, 255, 255, 0.05);
+}
+

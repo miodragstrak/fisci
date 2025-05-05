@@ -1,48 +1,86 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+
+/* Main framework styling */
 .framework {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background: #f4f8fa;
-    border-radius: 12px;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .framework h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #222;
-  }
-  
-  .tier {
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border-left: 4px solid #00b894;
-    background-color: #ffffff;
-    border-radius: 8px;
-  }
-  
-  .tier h2 {
-    margin-bottom: 1rem;
-    color: #0984e3;
-  }
-  
-  .stream {
-    margin-bottom: 1.5rem;
-    padding-left: 1rem;
-  }
-  
-  .stream h3 {
-    color: #2d3436;
-    margin-bottom: 0.5rem;
-  }
-  
-  .stream ul {
-    margin: 0;
-    padding-left: 1.2rem;
-  }
-  
-  .stream li {
-    margin-bottom: 0.3rem;
-    line-height: 1.5;
-  }
-  
+  max-width: 50%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #121212; /* Dark background */
+  border-radius: 12px;
+  font-family: 'Jura', sans-serif; /* Cyberpunk font */
+  color: #fff; /* Light text for contrast */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); /* Neon glow effect */
+}
+
+.page-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Heading styling */
+.framework h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #00FFFF; /* Neon Blue */
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6); /* Glow effect */
+}
+
+/* Tier Section */
+.tier {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #1a1a1a; /* Slightly lighter dark background */
+  border-left: 4px solid #00FFFF; /* Neon Blue */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); /* Neon glow effect */
+}
+
+.tier h2 {
+  margin-bottom: 1rem;
+  color: #FF00FF; /* Neon Pink */
+  font-size: 1.8rem;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.6); /* Glow effect */
+}
+
+/* Stream Section */
+.stream {
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+}
+
+.stream h3 {
+  color: #FF00FF; /* Neon Pink */
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.4); /* Glow effect */
+}
+
+/* Stream List */
+.stream ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.stream li {
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+  color: #00FFFF; /* Neon Blue */
+  font-size: 1.1rem;
+}
+
+.stream li:hover {
+  color: #FF00FF; /* Neon Pink on hover */
+  cursor: pointer;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.5); /* Neon glow on hover */
+}
+
+/* Add a hover effect for tier section to make it interactive */
+.tier:hover {
+  background-color: #333333; /* Darker background on hover */
+  border-left: 4px solid #9B4D96; /* Neon Purple on hover */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Brighter neon effect */
+}
