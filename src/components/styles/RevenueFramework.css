@@ -1,0 +1,48 @@
+.framework {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #f4f8fa;
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .framework h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #222;
+  }
+  
+  .tier {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-left: 4px solid #00b894;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+  
+  .tier h2 {
+    margin-bottom: 1rem;
+    color: #0984e3;
+  }
+  
+  .stream {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+  }
+  
+  .stream h3 {
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stream ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+  
+  .stream li {
+    margin-bottom: 0.3rem;
+    line-height: 1.5;
+  }
+  

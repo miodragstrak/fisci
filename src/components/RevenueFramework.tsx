@@ -1,0 +1,76 @@
+// components/RevenueFramework.jsx
+import './styles/RevenueFramework.css';
+
+function RevenueFramework() {
+  return (
+    <section className="framework">
+      <h1>🔬 DeSci Revenue Stream Framework (Updated)</h1>
+
+      <div className="tier">
+        <h2>🔹 1. Short-Term (0–12 months)</h2>
+
+        <div className="stream">
+          <h3>✅ A. Liquid Staking</h3>
+          <ul>
+            <li><strong>Mechanism:</strong> Stake crypto via DAO platform.</li>
+            <li><strong>Return:</strong> Regular staking yield.</li>
+            <li><strong>Bonus:</strong> DAO-native tokens or LP rewards.</li>
+          </ul>
+        </div>
+
+        <div className="stream">
+          <h3>✅ B. Fund Research Paper Publication</h3>
+          <ul>
+            <li><strong>Mechanism:</strong> Cover open-access or publishing costs.</li>
+            <li><strong>Return:</strong> Share of reading royalties, tokenized citation rewards.</li>
+            <li><strong>Extras:</strong> NFTs tied to publication success.</li>
+          </ul>
+        </div>
+
+        <div className="stream">
+          <h3>✅ C. Science Angels</h3>
+          <ul>
+            <li><strong>Mechanism:</strong> Support students or early-career researchers.</li>
+            <li><strong>Return:</strong> Immediate reward in $DSCI or DAO tokens.</li>
+            <li><strong>Bonus:</strong> Access to Discord, NFT badge, project previews.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="tier">
+        <h2>🔹 2. Mid-Term (1–3 years)</h2>
+
+        <div className="stream">
+          <h3>✅ A. Invest in Research Projects</h3>
+          <ul>
+            <li><strong>Mechanism:</strong> Fund prototyping or data collection.</li>
+            <li><strong>Return:</strong> Royalties from IP or revenue share in DAO spin-offs.</li>
+          </ul>
+        </div>
+
+        <div className="stream">
+          <h3>✅ B. Lending Pools for Researchers</h3>
+          <ul>
+            <li><strong>Mechanism:</strong> Provide loans or milestone-based credit.</li>
+            <li><strong>Return:</strong> Fixed interest or bonuses in governance tokens.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="tier">
+        <h2>🔹 3. Long-Term (3+ years)</h2>
+
+        <div className="stream">
+          <h3>✅ A. Retroactive Funding Pool</h3>
+          <ul>
+            <li><strong>Mechanism:</strong> Fund research after proven impact.</li>
+            <li><strong>Return:</strong> Royalties or retroactive token bonuses.</li>
+            <li><strong>Focus:</strong> High-credibility, impact-first science.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default RevenueFramework;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-import './components/styles/main.css'; 
+import './styles/main.css'; 
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
@@ -11,16 +11,24 @@ function YieldCalculator() {
   const [lending, setLending] = useState(34);
 
   const handleSliderChange = (index: number, value: number) => {
+    // Copy the current slider values
     const sliders = [staking, sciSOL, lending];
+
+    // Calculate the total of other sliders
     const total = sliders.reduce((sum, slider, i) => (i !== index ? sum + slider : sum), 0);
+
+    // Calculate the remaining percentage
     const remainingPercentage = 100 - total;
 
+    // Adjust the current slider value if it exceeds the remaining percentage
     if (value > remainingPercentage) {
       value = remainingPercentage;
     }
 
+    // Update the selected slider value
     sliders[index] = value;
 
+    // Update state based on the slider index
     if (index === 0) {
       setStaking(sliders[0]);
     } else if (index === 1) {
@@ -59,13 +67,6 @@ function YieldCalculator() {
     value: item.percentage,
   }));
 
-  // Calculate the sum of the 1-Year Returns
-  const totalReturn = breakdown.reduce((sum, item) => {
-    const amount = (investment * item.percentage) / 100;
-    const projected = amount * (1 + item.yieldRate);
-    return sum + projected;
-  }, 0);
-
   return (
     <div className="container">
       <h2>Wallet Login + Yield Calculator</h2>
@@ -99,7 +100,6 @@ function YieldCalculator() {
             <th>%</th>
             <th>Value ($)</th>
             <th>Asset</th>
-            <th>Yield Rate</th> {/* New column for Yield Rate */}
             <th>1-Year Return ($)</th>
             <th>Comment</th>
           </tr>
@@ -113,18 +113,11 @@ function YieldCalculator() {
                 <td>{item.percentage}%</td>
                 <td>${amount.toFixed(2)}</td>
                 <td>{item.asset}</td>
-                <td>{(item.yieldRate * 100).toFixed(2)}%</td> {/* Display Yield Rate as percentage */}
                 <td>${projected.toFixed(2)}</td>
                 <td>{item.comment}</td>
               </tr>
             );
           })}
-          {/* Add a last row for the total 1-Year Return */}
-          <tr>
-            <td colSpan={4}><strong>Total 1-Year Return ($)</strong></td>
-            <td><strong>${totalReturn.toFixed(2)}</strong></td>
-            <td></td>
-          </tr>
         </tbody>
       </table>
 
