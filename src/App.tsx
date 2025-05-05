@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
+import './styles/main.css'; 
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
@@ -50,8 +51,9 @@ function YieldCalculator() {
   }));
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
-      <h2>Wallet Login + Yield Calculator</h2>
+    <div className="container">
+      <h2>
+        Wallet Login + Yield Calculator</h2>
       <input
         type="number"
         value={investment}
@@ -76,7 +78,7 @@ function YieldCalculator() {
         </div>
       ))}
 
-      <table style={{ width: '100%', marginTop: '2rem', border: '1px solid #ccc' }}>
+      <table>
         <thead>
           <tr>
             <th>%</th>
