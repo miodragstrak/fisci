@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-import './styles/main.css'; 
+import './styles/main.css';
+
+interface YieldCalculatorProps {
+  solBalance: number | null;
+}
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
-function YieldCalculator() {
-  const [investment, setInvestment] = useState(100);
-  const [staking, setStaking] = useState(0); // Initial values split equally
+function YieldCalculator({ solBalance }: YieldCalculatorProps) {
+  const [investment, setInvestment] = useState<number>(solBalance || 100);
+  const [staking, setStaking] = useState(0);
   const [sciSOL, setSciSOL] = useState(0);
   const [lending, setLending] = useState(0);
+
+  useEffect(() => {
+    if (solBalance !== null) {
+      setInvestment(solBalance * 150); // Recimo, 1 SOL = $150
+    }
+  }, [solBalance]);
 
   const handleSliderChange = (index: number, value: number) => {
     const sliders = [staking, sciSOL, lending];
@@ -21,13 +31,9 @@ function YieldCalculator() {
 
     sliders[index] = value;
 
-    if (index === 0) {
-      setStaking(sliders[0]);
-    } else if (index === 1) {
-      setSciSOL(sliders[1]);
-    } else {
-      setLending(sliders[2]);
-    }
+    setStaking(sliders[0]);
+    setSciSOL(sliders[1]);
+    setLending(sliders[2]);
   };
 
   const breakdown = [
@@ -59,7 +65,6 @@ function YieldCalculator() {
     value: item.percentage,
   }));
 
-  // Calculate the sum of the 1-Year Returns
   const totalReturn = breakdown.reduce((sum, item) => {
     const amount = (investment * item.percentage) / 100;
     const projected = amount * (1 + item.yieldRate);
@@ -77,11 +82,16 @@ function YieldCalculator() {
         style={{ width: '25%', padding: '1rem', marginBottom: '1rem' }}
       />
 
-      <p>If 100% in Simple Staking: <strong>${(investment * 1.08).toFixed(2)} USD</strong> after 1 year</p>
+      <p>
+        If 100% in Simple Staking:{' '}
+        <strong>${(investment * 1.08).toFixed(2)} USD</strong> after 1 year
+      </p>
 
       {breakdown.map((item, index) => (
         <div key={index}>
-          <label>{item.label}: {item.percentage}%</label>
+          <label>
+            {item.label}: {item.percentage}%
+          </label>
           <input
             type="range"
             min={0}
@@ -93,41 +103,44 @@ function YieldCalculator() {
         </div>
       ))}
 
-    <div className="table-container">
-      <table className="yield-table">
-        <thead>
-          <tr>
-            <th>%</th>
-            <th>Value ($)</th>
-            <th>Asset</th>
-            <th>Yield Rate</th> {/* New column for Yield Rate */}
-            <th>1-Year Return ($)</th>
-            <th>Comment</th>
-          </tr>
-        </thead>
-        <tbody>
-          {breakdown.map((item, i) => {
-            const amount = (investment * item.percentage) / 100;
-            const projected = amount * (1 + item.yieldRate);
-            return (
-              <tr key={i}>
-                <td>{item.percentage}%</td>
-                <td>${amount.toFixed(2)}</td>
-                <td>{item.asset}</td>
-                <td>{(item.yieldRate * 100).toFixed(2)}%</td> {/* Display Yield Rate as percentage */}
-                <td>${projected.toFixed(2)}</td>
-                <td>{item.comment}</td>
-              </tr>
-            );
-          })}
-          {/* Add a last row for the total 1-Year Return */}
-          <tr>
-            <td colSpan={4}><strong>Total 1-Year Return ($)</strong></td>
-            <td><strong>${totalReturn.toFixed(2)}</strong></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="table-container">
+        <table className="yield-table">
+          <thead>
+            <tr>
+              <th>%</th>
+              <th>Value ($)</th>
+              <th>Asset</th>
+              <th>Yield Rate</th>
+              <th>1-Year Return ($)</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {breakdown.map((item, i) => {
+              const amount = (investment * item.percentage) / 100;
+              const projected = amount * (1 + item.yieldRate);
+              return (
+                <tr key={i}>
+                  <td>{item.percentage}%</td>
+                  <td>${amount.toFixed(2)}</td>
+                  <td>{item.asset}</td>
+                  <td>{(item.yieldRate * 100).toFixed(2)}%</td>
+                  <td>${projected.toFixed(2)}</td>
+                  <td>{item.comment}</td>
+                </tr>
+              );
+            })}
+            <tr>
+              <td colSpan={4}>
+                <strong>Total 1-Year Return ($)</strong>
+              </td>
+              <td>
+                <strong>${totalReturn.toFixed(2)}</strong>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <PieChart width={400} height={300} style={{ margin: '2rem auto' }}>

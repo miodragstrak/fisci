@@ -1,16 +1,47 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import YieldCalculator from './components/YieldCalculator';
 import RevenueFramework from './components/RevenueFramework';
 import PlatformFocus from './components/PlatformFocus';
 import logo from './assets/ll2.svg';
 import './components/styles/main.css';
 
-function App() {
+import {
+  ConnectionProvider,
+  WalletProvider,
+  useConnection,
+  useWallet
+} from '@solana/wallet-adapter-react';
+import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
+
+import '@solana/wallet-adapter-react-ui/styles.css';
+
+const wallets = [new PhantomWalletAdapter()];
+
+function AppContent() {
+  const { connection } = useConnection();
+  const { publicKey } = useWallet();
+  const [solBalance, setSolBalance] = useState<number | null>(null);
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      if (publicKey) {
+        const balance = await connection.getBalance(publicKey);
+        setSolBalance(balance / 1e9); // Convert lamports to SOL
+      }
+    };
+    fetchBalance();
+  }, [publicKey, connection]);
+
   return (
     <BrowserRouter>
-      {/* Logo */}
+      {/* Header */}
       <header className="header-logo">
         <img src={logo} alt="Logo" style={{ width: '150px', height: 'auto' }} />
+        <div style={{ position: 'absolute', right: '1rem', top: '1rem' }}>
+          <WalletMultiButton />
+        </div>
       </header>
 
       {/* Navbar */}
@@ -23,10 +54,22 @@ function App() {
       {/* Routes */}
       <Routes>
         <Route path="/" element={<RevenueFramework />} />
-        <Route path="/yield" element={<YieldCalculator />} />
         <Route path="/platform" element={<PlatformFocus />} />
+        <Route path="/yield" element={<YieldCalculator solBalance={solBalance} />} />
       </Routes>
     </BrowserRouter>
+  );
+}
+
+function App() {
+  return (
+    <ConnectionProvider endpoint="https://api.mainnet-beta.solana.com">
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>
+          <AppContent />
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
   );
 }
 

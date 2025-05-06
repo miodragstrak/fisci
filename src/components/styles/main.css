@@ -30,6 +30,7 @@ body {
 .header-logo {
   text-align: center;
   margin-top: 30px;
+  padding: 1rem;
 }
 
 /* Navbar */
@@ -37,7 +38,8 @@ body {
   display: flex;
   justify-content: space-around;
   background-color: #1f1f1f; /* Slightly lighter dark background */
-  padding: 10px 0;
+  gap: 1rem;
+  padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2); /* Neon-like glow effect */
 }
 
@@ -157,3 +159,9 @@ tr:hover {
   background-color: rgba(0, 255, 255, 0.05);
 }
 
+.wallet-button-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
