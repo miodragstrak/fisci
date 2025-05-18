@@ -3,9 +3,9 @@ import './styles/PlatformFocus.css';
 function RevenueFramework() {
   return (
     <section className="page-content">
-      <h1>Investing in Science</h1>
 
       <div className="focus-container">
+        <h1>Investing in Science</h1>
         <h2>1. Short-Term (0–12 months)</h2>
 
         <div className="feature-block">

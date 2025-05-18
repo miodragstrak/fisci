@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import YieldCalculator from './components/YieldCalculator';
 import RevenueFramework from './components/RevenueFramework';
 import PlatformFocus from './components/PlatformFocus';
-import logo from './assets/ll2.svg';
+import ClientOfferings from './components/ClientOfferings';
+import logo from './assets/ll2.svg'; // Make sure to import your logo
 import './components/styles/main.css';
 
 import {
@@ -13,11 +14,36 @@ import {
   useWallet
 } from '@solana/wallet-adapter-react';
 import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
-
 import '@solana/wallet-adapter-react-ui/styles.css';
 
-const wallets = [new PhantomWalletAdapter()];
+import { 
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+  AlphaWalletAdapter,
+  CloverWalletAdapter
+} from '@solana/wallet-adapter-wallets';
+
+function App() {
+  const wallets = useMemo(
+    () => [
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new AlphaWalletAdapter(),
+      new CloverWalletAdapter()
+    ],
+    []
+  );
+
+  return (
+    <ConnectionProvider endpoint="https://api.mainnet-beta.solana.com">
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>
+          <AppContent />
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
+  );
+}
 
 function AppContent() {
   const { connection } = useConnection();
@@ -36,40 +62,41 @@ function AppContent() {
 
   return (
     <BrowserRouter>
-      {/* Header */}
-      <header className="header-logo">
-        <img src={logo} alt="Logo" style={{ width: '150px', height: 'auto' }} />
-        <div style={{ position: 'absolute', right: '1rem', top: '1rem' }}>
-          <WalletMultiButton />
-        </div>
-      </header>
+      {/* Unified Header */}
+      
+<header className="header">
+  {/* Logo centered in header */}
+  <div className="logo-container">
+    <Link to="/">
+      <img src={logo} alt="Fi-Sci-Foo Logo" className="main-logo" />
+    </Link>
+  </div>
+  
+  {/* Wallet button properly positioned */}
+  <div className="wallet-wrapper">
+    <WalletMultiButton className="wallet-connect-btn" />
+  </div>
+</header>
 
-      {/* Navbar */}
-      <nav className="navbar">
-        <Link to="/">Finance Science</Link>
-        <Link to="/platform">Our Platform</Link>
-        <Link to="/yield">Yield Calculator</Link>
-      </nav>
+{/* Navbar below header */}
+<nav className="navbar">
+  <Link to="/">Finance Science</Link>
+  <Link to="/platform">Our Platform</Link>
+  <Link to="/revenues">Sci Revenues</Link>
+  <Link to="/yield">Yield Calculator</Link>
+</nav>
 
-      {/* Routes */}
-      <Routes>
-        <Route path="/" element={<RevenueFramework />} />
-        <Route path="/platform" element={<PlatformFocus />} />
-        <Route path="/yield" element={<YieldCalculator solBalance={solBalance} />} />
-      </Routes>
+      {/* Main Content */}
+      <main className="page-content">
+        <Routes>
+          <Route path="/" element={<ClientOfferings />} />
+          <Route path="/revenues" element={<RevenueFramework />} />
+          <Route path="/offerings" element={<ClientOfferings />} />
+          <Route path="/platform" element={<PlatformFocus />} />
+          <Route path="/yield" element={<YieldCalculator solBalance={solBalance} />} />
+        </Routes>
+      </main>
     </BrowserRouter>
-  );
-}
-
-function App() {
-  return (
-    <ConnectionProvider endpoint="https://api.mainnet-beta.solana.com">
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <AppContent />
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
   );
 }
 

@@ -1,86 +1,35 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
-
-/* Main framework styling */
+/* ===== RevenueFramework.css ===== */
 .framework {
   max-width: 50%;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: #121212; /* Dark background */
+  margin: var(--space-lg) auto;
+  padding: var(--space-lg);
+  background: var(--bg-darker);
   border-radius: 12px;
-  font-family: 'Jura', sans-serif; /* Cyberpunk font */
-  color: #fff; /* Light text for contrast */
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); /* Neon glow effect */
+  box-shadow: 0 0 15px var(--primary-glow);
 }
 
-.page-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-/* Heading styling */
-.framework h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #00FFFF; /* Neon Blue */
-  font-size: 2.5rem;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6); /* Glow effect */
-}
-
-/* Tier Section */
 .tier {
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background-color: #1a1a1a; /* Slightly lighter dark background */
-  border-left: 4px solid #00FFFF; /* Neon Blue */
+  margin-bottom: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(123, 44, 191, 0.1);
+  border-left: 4px solid var(--secondary);
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); /* Neon glow effect */
+  transition: all 0.3s ease;
 }
 
-.tier h2 {
-  margin-bottom: 1rem;
-  color: #FF00FF; /* Neon Pink */
-  font-size: 1.8rem;
-  text-shadow: 0 0 8px rgba(255, 0, 255, 0.6); /* Glow effect */
-}
-
-/* Stream Section */
-.stream {
-  margin-bottom: 1.5rem;
-  padding-left: 1rem;
-}
-
-.stream h3 {
-  color: #FF00FF; /* Neon Pink */
-  margin-bottom: 0.5rem;
-  font-size: 1.4rem;
-  text-shadow: 0 0 8px rgba(255, 0, 255, 0.4); /* Glow effect */
-}
-
-/* Stream List */
-.stream ul {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.stream li {
-  margin-bottom: 0.3rem;
-  line-height: 1.5;
-  color: #00FFFF; /* Neon Blue */
-  font-size: 1.1rem;
-}
-
-.stream li:hover {
-  color: #FF00FF; /* Neon Pink on hover */
-  cursor: pointer;
-  text-shadow: 0 0 10px rgba(255, 0, 255, 0.5); /* Neon glow on hover */
-}
-
-/* Add a hover effect for tier section to make it interactive */
 .tier:hover {
-  background-color: #333333; /* Darker background on hover */
-  border-left: 4px solid #9B4D96; /* Neon Purple on hover */
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Brighter neon effect */
+  background: rgba(123, 44, 191, 0.2);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-content, .framework {
+    max-width: 90%;
+    padding: var(--space-md);
+  }
+  
+  .container {
+    width: 100%;
+  }
 }
