@@ -4,7 +4,8 @@ import YieldCalculator from './components/YieldCalculator';
 import RevenueFramework from './components/RevenueFramework';
 import PlatformFocus from './components/PlatformFocus';
 import ClientOfferings from './components/ClientOfferings';
-import logo from './assets/ll2.svg'; // Make sure to import your logo
+import UniversitySupportPlatform from './components/UniversitySupportPlatform';
+import logo from '/ll1.svg'; // Make sure to import your logo
 import './components/styles/main.css';
 
 import {
@@ -80,20 +81,21 @@ function AppContent() {
 
 {/* Navbar below header */}
 <nav className="navbar">
-  <Link to="/">Finance Science</Link>
+  <Link to="/">University Support</Link>
   <Link to="/platform">Our Platform</Link>
   <Link to="/revenues">Sci Revenues</Link>
-  <Link to="/yield">Yield Calculator</Link>
+  <Link to="/offerings">Professional Services</Link>
 </nav>
 
       {/* Main Content */}
       <main className="page-content">
         <Routes>
-          <Route path="/" element={<ClientOfferings />} />
+          <Route path="/" element={<UniversitySupportPlatform />} />
           <Route path="/revenues" element={<RevenueFramework />} />
           <Route path="/offerings" element={<ClientOfferings />} />
           <Route path="/platform" element={<PlatformFocus />} />
           <Route path="/yield" element={<YieldCalculator solBalance={solBalance} />} />
+          <Route path="/university-support" element={<UniversitySupportPlatform />} />
         </Routes>
       </main>
     </BrowserRouter>
