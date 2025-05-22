@@ -486,3 +486,40 @@ tr:hover {
   background: var(--accent);
   transform: translateY(-3px);
 }
+/* Expert Endorsement Styles */
+.expert-endorsement {
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 1.5rem;
+  background: rgba(123, 44, 191, 0.1);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.endorsement-quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.expert-title {
+  margin-top: 1rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+
+.wallet-adapter-dropdown {
+  z-index: 1000 !important;
+}
+
+.wallet-adapter-button[aria-expanded="true"] {
+  background: var(--secondary) !important;
+}
+
+/* Solflare-specific button */
+.wallet-adapter-button.wallet-adapter-button-trigger {
+  background-color: #1991fa !important;
+}

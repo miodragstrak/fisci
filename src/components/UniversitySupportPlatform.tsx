@@ -1,6 +1,9 @@
 // UniversitySupportPlatform.tsx
 import { Link } from 'react-router-dom';
 import './styles/main.css';
+import bbbLogo from '../assets/bbb.svg';
+import ll1Logo from '../assets/ll1.svg';
+import solanaLogo from '../assets/solana-sol-logo.svg';
 
 const UniversitySupportPlatform = () => {
   const services = [
@@ -53,16 +56,30 @@ const UniversitySupportPlatform = () => {
   return (
     <div className="page-content">
       <section className="platform-header">
-        <h1>Superteam Balkan University Web3 Integration Platform</h1>
+        <h1>Superteam Balkan's University Web3 Integration Platform</h1>
         <p className="subtitle">
-          Institutional-grade blockchain solutions for academia, developed in partnership with leading universities
+          Solana blockchain solutions for academia, developed by Superteam Balkan in partnership with leading universities and domain experts
         </p>
-        <div className="university-badge">
-          <span>Officially Endorsed by Superteam Balkan</span>
-          <div className="partner-logos">
-            {/* Add your partner university logos here */}
-          </div>
-        </div>
+            {/* University Partners Section */}
+            <div className="logo-grid">
+               <h3>Trusted by:</h3>
+              <img src={bbbLogo} alt="Belgrade Blockchain Hub" width="80" height="40" />
+              <img src={ll1Logo} alt="Ljubljana Lab" width="80" height="40" />
+            </div>
+              <div className="expert-endorsement">
+              <div className="endorsement-quote">
+                "This platform bridges the gap between cutting-edge blockchain technology 
+                and academic institutional needs"
+                <div className="expert-title">
+                  — Prof. Ana Kovačević, Digital Innovation Lab
+                </div>
+              </div>
+            </div>
+                  {/* Solana Badge */}
+            <div className="solana-badge">
+              <span>Official Education Partner</span>
+              <img src={solanaLogo} alt="Powered by Solana" width="36" height="12" />
+            </div>
       </section>
 
       <div className="services-grid">

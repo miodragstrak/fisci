@@ -61,6 +61,8 @@ function AppContent() {
     fetchBalance();
   }, [publicKey, connection]);
 
+  
+
   return (
     <BrowserRouter>
       {/* Unified Header */}
